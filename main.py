@@ -29,7 +29,7 @@ react_prompt_with_format_instructions = PromptTemplate(
 agent = create_react_agent(llm=llm, tools=tools, prompt=react_prompt_with_format_instructions)
 agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
 extract_output = RunnableLambda(lambda x: x["output"])
-parse_output = RunnableLambda(lambda x:output_parser.parse(str(x))
+parse_output = RunnableLambda(lambda x:output_parser.parse(str(x)))
 chain = agent_executor | extract_output | parse_output
 
 
